@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base href="" />
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Correction Examen blanc</title>
+
+    <!-- Styles et fonts -->
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+
+    <!-- RS WCL -->
+    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="rs_wcl.js"></script>
+
+    <!-- Controllers IHM -->
+    <script type="text/javascript" src="Controller.js"></script>
+
+    <script type="text/javascript">
+      // Pour que tout se passe correctement au chargement de la page, 
+      // il faut initialiser "document.currentController" et son scope 
+      // avant la création des composants, donc ici...
+      document.currentController = new Controller();
+    </script>
+  </head>
+
+  <!-- Corps de la page -->
+  <body onload="document.currentController.init()">
+    <div id="display">
+      <div id="new-note-form">
+        <input type="text" id="titre" placeholder="Titre de la nouvelle note" size="50" maxlength="50" />
+        <textarea id="contenu" placeholder="Contenu de la nouvelle note" cols="50"></textarea>
+        <button onclick="document.currentController.createNote()" id="btn_form">
+          Créer la note
+        </button>
+      </div>
+
+      <h2>Liste des notes</h2>
+      <div id="notes-container"></div>
+    </div>
+    <div id="rs-toast"></div>
+  </body>
+</html>
